@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
-// import { Input } from "@/components/ui/input"
-// import { Textarea } from "@/components/ui/textarea"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Calendar as CalendarIcon, Facebook, Instagram, Twitter, Moon, Sun } from 'lucide-react'
@@ -227,6 +227,39 @@ export default function TestimonyPortal() {
           </div>
         </main>
       )}
+
+      {/* Contact Form Section */}
+      <section className="py-16 bg-black bg-opacity-30 dark:bg-opacity-10">
+        <div className="container mx-auto max-w-2xl">
+          <h2 className="text-4xl font-bold text-center mb-12">Submit Your Testimony</h2>
+          <form className="space-y-6">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium mb-2">Your Name:</label>
+              <Input id="name" className="w-full bg-white bg-opacity-10 dark:bg-opacity-5" />
+            </div>
+            <div>
+              <label htmlFor="category" className="block text-sm font-medium mb-2">Category:</label>
+              <Select>
+                <SelectTrigger className="w-full bg-white bg-opacity-10 dark:bg-opacity-5">
+                  <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
+                <SelectContent>
+                  {categories.map((category, index) => (
+                    <SelectItem key={index} value={category.name.toLowerCase()}>
+                      {category.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <label htmlFor="testimony" className="block text-sm font-medium mb-2">Your Testimony:</label>
+              <Textarea id="testimony" className="w-full bg-white bg-opacity-10 dark:bg-opacity-5" rows={6} />
+            </div>
+            <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">Submit</Button>
+          </form>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="bg-black text-white py-12 dark:bg-gray-900">
